@@ -31,6 +31,7 @@ final class QuestionViewController: UIViewController {
     private var currentAnswers: [Answer] {
         questions[questionIndex].answers
     }
+    private var animals: [Animal] = []
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -39,6 +40,11 @@ final class QuestionViewController: UIViewController {
         let answerCount = Float(currentAnswers.count - 1)
         rangedSlider.maximumValue = answerCount
         rangedSlider.value = answerCount / 2
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let resultVC = segue.destination as? ResultViewController else { return }
+        resultVC.choosenAnswers = answersChosen
     }
 
     // MARK: - IB Actions

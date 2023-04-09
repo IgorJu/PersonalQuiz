@@ -52,7 +52,7 @@ enum ResponseType {
     case ranged
 }
 
-struct Answer {
+struct Answer: Hashable {
     let title: String
     let animal: Animal
 }
@@ -75,4 +75,20 @@ enum Animal: Character {
             return "Ваша сила - в мудрости. Медленный и вдумчивый выигрывает на больших дистанциях."
         }
     }
+    
+    var typeOfAnimal: String {
+        switch self {
+        case .dog:
+            return "Собака"
+        case .cat:
+            return "Кот"
+        case .rabbit:
+            return "Кролик"
+        case .turtle:
+            return "Черепаха"
+        }
+    }
+    
 }
+    
+
